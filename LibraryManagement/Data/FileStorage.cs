@@ -27,14 +27,11 @@ namespace LibraryManagement.Data
             if (storage == null)
                 throw new Exception("Deserialization returned null.");
 
-
             return storage;
-
         }
 
         public void Save(LibraryStorage storage)
         {
-
             var json = JsonSerializer.Serialize(storage);
 
             File.WriteAllText(path, json);

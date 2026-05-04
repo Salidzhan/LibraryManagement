@@ -1,45 +1,52 @@
-﻿using System;
+﻿using LibraryManagement.Data;
+using LibraryManagement.Models;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using LibraryManagement.Models;
 
 namespace LibraryManagement.Services
 {
     public class BookService
     {
-        private List<Book> books = new List<Book>();
+        private readonly FileBookRepository bookRepo;
 
-        public void AddBook(Book book)
+        public BookService(FileBookRepository bookRepo)
         {
-            books.Add(book);
+            this.bookRepo = bookRepo;
         }
-
-        public void UpdateBook(Book book)
+        public void AddBook(string title, string genre, int authorId, int copies)
         {
-            var existing = books.FirstOrDefault(b => b.Id == book.Id);
-            if (existing != null)
-            {
-                existing.Title = book.Title;
-                existing.Genre = book.Genre;
-                existing.AuthorId = book.AuthorId;
-                existing.AvailableCopies = book.AvailableCopies;
-            }
+            var book = new Book(
+                0,
+               title,
+               genre,
+               authorId,
+               copies
+               );
+
+            bookRepo.Save(book);
+        }
+        public void UpdateBook(int id, string title, string genre, int authorId, int copies)
+        {
+            var book = bookRepo.GetById(id);
+
+            book.Title = title;
+            book.Genre = genre;
+            book.AuthorId = authorId;
+            book.AvailableCopies = copies;
+
+            bookRepo.Save(book);
+
         }
 
         public void DeleteBook(int id)
         {
-            var book = books.FirstOrDefault(b => b.Id == id);
-            if (book != null)
-            {
-                books.Remove(book);
-            }
+
+            bookRepo.Delete(id);
         }
 
-        public List<Book> GetAll()
+        public IReadOnlyList<Book> GetAllBooks()
         {
-            return books;
+            return bookRepo.GetAll();
         }
     }
 }
