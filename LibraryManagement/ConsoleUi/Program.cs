@@ -17,14 +17,14 @@ namespace LibraryManagement
             var storage = new FileStorage("library.json");
 
             IBookRepository bookRepo = new FileBookRepository(storage);
-            //var memberRepo = new FileStorage<Member>(storage);
-            //var loanRepo = new FileStorage<Loan>(storage);
-            //var reservationRepo = new FileStorage<Reservation>(storage);
+            IAuthorRepository authorRepo = new FileAuthorRepository(storage);
 
-            var service = new BookService(bookRepo);
 
-            //var ui = new LibraryUi(service);
-            //object result = ui.Run();
+            var bookService = new BookService(bookRepo, authorRepo);
+            var authorService = new AuthorService(authorRepo);
+
+            var ui = new LibraryUi(bookService, authorService);
+            ui.Run();
 
             Console.WriteLine("1 Add Book");
             Console.WriteLine("2 Register Member");
