@@ -1,5 +1,6 @@
 ﻿using LibraryManagement.Data;
 using LibraryManagement.Models;
+using LibraryManagement.Services.Interfaces1;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -7,9 +8,9 @@ namespace LibraryManagement.Services
 {
     public class BookService
     {
-        private readonly FileBookRepository bookRepo;
+        private readonly IBookRepository bookRepo;
 
-        public BookService(FileBookRepository bookRepo)
+        public BookService(IBookRepository bookRepo)
         {
             this.bookRepo = bookRepo;
         }

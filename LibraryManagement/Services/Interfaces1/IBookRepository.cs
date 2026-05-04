@@ -6,11 +6,14 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace LibraryManagement.Services.Interfaces1
-{ 
-        public interface IBookRepository
-        {
-            List<Book> GetAll();
-            void Save(Book book);
-        }
-    
+{
+    public interface IBookRepository
+    {
+        Book GetById(int id);
+
+        IReadOnlyList<Book> GetAll();
+        void Save(Book book);
+        void Delete(int id);
+    }
+
 }

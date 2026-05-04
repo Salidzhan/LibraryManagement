@@ -1,4 +1,5 @@
 ﻿using LibraryManagement.Models;
+using LibraryManagement.Services.Interfaces1;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace LibraryManagement.Data
 {
-    public class FileBookRepository
+    public class FileBookRepository : IBookRepository
     {
         private readonly FileStorage storage;
 
