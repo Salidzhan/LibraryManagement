@@ -71,6 +71,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Data\FileBookRepository.cs" />
     <Compile Include="Data\FileStorage.cs" />
     <Compile Include="Data\LibraryContext.cs" />
     <Compile Include="Data\LibraryStorage.cs" />
