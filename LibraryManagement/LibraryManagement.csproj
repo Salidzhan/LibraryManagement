@@ -89,7 +89,9 @@
     <Compile Include="Services\IAuthorRepository.cs" />
     <Compile Include="Services\Interfaces1\IAuthorRepository.cs" />
     <Compile Include="Services\Interfaces1\IBookRepository.cs" />
+    <Compile Include="Services\Interfaces1\ILoanRepository.cs" />
     <Compile Include="Services\Interfaces1\IMemberRepository.cs" />
+    <Compile Include="Services\Interfaces1\IReservationRepository.cs" />
     <Compile Include="Services\LoanService.cs" />
     <Compile Include="Services\MemberService.cs" />
   </ItemGroup>
