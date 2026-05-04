@@ -11,5 +11,7 @@ namespace LibraryManagement.Services.Interfaces1
     {
         List<Author> GetAll();
         void Save(Author author);
+
+        Author GetById(int id);
     }
 }

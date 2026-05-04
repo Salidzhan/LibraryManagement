@@ -77,6 +77,7 @@
     <Compile Include="ConsoleUi\FileStorage.cs" />
     <Compile Include="ConsoleUi\LibraryService.cs" />
     <Compile Include="ConsoleUi\LibraryUi.cs" />
+    <Compile Include="Data\FileAuthorRepository.cs" />
     <Compile Include="Data\FileBookRepository.cs" />
     <Compile Include="Data\FileStorage.cs" />
     <Compile Include="Data\LibraryContext.cs" />

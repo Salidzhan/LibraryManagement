@@ -12,7 +12,7 @@ namespace LibraryManagement.Models
         public string Title { get; set; }
         public string Genre { get; set; }
         public int AuthorId { get; set; }
-        public int AvailableCopies { get; set; }
+        public int Copies { get; set; }
         public int LoanCount { get; set; }
 
 
@@ -26,22 +26,22 @@ namespace LibraryManagement.Models
             Title = title;
             Genre = genre;
             AuthorId = authorId;
-            AvailableCopies = copies;
+            Copies = copies;
             LoanCount = 0;
         }
 
         public void Borrow()
         {
-            if (AvailableCopies <= 0)
+            if (Copies <= 0)
                 throw new Exception("No copies available");
 
-            AvailableCopies--;
+            Copies--;
             LoanCount++;
         }
 
         public void Return()
         {
-            AvailableCopies++;
+            Copies++;
         }
     }
 }

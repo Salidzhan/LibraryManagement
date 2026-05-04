@@ -54,7 +54,7 @@ namespace LibraryManagement.Data
                     book.Title,
                     book.Genre,
                     book.AuthorId,
-                    book.AvailableCopies
+                    book.Copies
                     );
 
                 db.Books.Add(newBook);
