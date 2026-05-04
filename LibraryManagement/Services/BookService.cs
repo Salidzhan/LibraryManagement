@@ -7,8 +7,6 @@ namespace LibraryManagement.Services
 {
     public class BookService
     {
-        //private List<Book> books = new List<Book>();
-
         private readonly FileBookRepository bookRepo;
 
         public BookService(FileBookRepository bookRepo)
