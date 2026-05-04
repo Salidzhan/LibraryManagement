@@ -74,6 +74,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ConsoleUi\FileStorage.cs" />
+    <Compile Include="ConsoleUi\LibraryService.cs" />
+    <Compile Include="ConsoleUi\LibraryUi.cs" />
     <Compile Include="Data\FileStorage.cs" />
     <Compile Include="Data\LibraryContext.cs" />
     <Compile Include="Data\LibraryStorage.cs" />

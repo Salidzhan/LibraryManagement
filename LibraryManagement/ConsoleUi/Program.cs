@@ -23,7 +23,7 @@ namespace LibraryManagement
             var service = new LibraryService(bookRepo, memberRepo, loanRepo, reservationRepo);
 
             var ui = new LibraryUi(service);
-            ui.Run();
+            object result = ui.Run();
 
           Console.WriteLine("1 Add Book");
             Console.WriteLine("2 Register Member");
