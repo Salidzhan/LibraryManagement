@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
 using System.Text.Json;
-using System.Threading.Tasks;
 
 
 namespace LibraryManagement.Data
@@ -31,14 +27,11 @@ namespace LibraryManagement.Data
             if (storage == null)
                 throw new Exception("Deserialization returned null.");
 
-
             return storage;
-
         }
 
         public void Save(LibraryStorage storage)
         {
-
             var json = JsonSerializer.Serialize(storage);
 
             File.WriteAllText(path, json);
