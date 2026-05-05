@@ -74,6 +74,13 @@ namespace LibraryManagement
 
             authorService.AddAuthor(name);
             Console.WriteLine("Author added.");
+
+
+            if (string.IsNullOrWhiteSpace(name))
+            {
+                Console.WriteLine("Invalid name.");
+                return;
+            }
         }
 
         private void AddBook()
