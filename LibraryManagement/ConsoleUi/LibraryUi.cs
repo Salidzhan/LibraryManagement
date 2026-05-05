@@ -97,6 +97,12 @@ namespace LibraryManagement
             Console.Write("Title: ");
             var title = Console.ReadLine();
 
+            if (string.IsNullOrWhiteSpace(title))
+            {
+                Console.WriteLine("Invalid title.");
+                return;
+            }
+
             Console.Write("Genre: ");
             var genre = Console.ReadLine();
 
