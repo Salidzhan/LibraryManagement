@@ -81,6 +81,15 @@ namespace LibraryManagement
                 Console.WriteLine("Invalid name.");
                 return;
             }
+            try
+            {
+                authorService.AddAuthor(name);
+                Console.WriteLine("Author added.");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error: {ex.Message}");
+            }
         }
 
         private void AddBook()
