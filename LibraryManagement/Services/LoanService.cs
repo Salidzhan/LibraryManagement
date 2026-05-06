@@ -87,7 +87,7 @@ namespace LibraryManagement.Services
 
             var daysLate = (DateTime.Now - loan.DueDate).Days;
 
-            return daysLate * 1.5m; // 1.5 per day
+            return daysLate * 1.5m; 
         }
     }
 }

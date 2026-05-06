@@ -3,8 +3,6 @@ using LibraryManagement.Services.Interfaces1;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace LibraryManagement.Data
 {
@@ -16,9 +14,10 @@ namespace LibraryManagement.Data
         {
             _fileStorage = fileStorage;
         }
+
         public List<Author> GetAll()
         {
-           var db =  _fileStorage.Load();
+            var db = _fileStorage.Load();
             return db.Authors;
         }
 
@@ -40,31 +39,25 @@ namespace LibraryManagement.Data
                 throw new ArgumentNullException(nameof(author));
 
             if (string.IsNullOrWhiteSpace(author.Name))
-                throw new ArgumentException("Author name is missing.", nameof(author));
+                throw new ArgumentException("Author name is missing.");
 
             var db = _fileStorage.Load();
 
             if (author.Id == 0)
             {
-                var newAuthor = new Author(
-                    db.NextId++,
-                    author.Name
-                    );
-
+                var newAuthor = new Author(db.NextId++, author.Name);
                 db.Authors.Add(newAuthor);
             }
             else
             {
+                var existing = db.Authors.FirstOrDefault(a => a.Id == author.Id);
 
-                var index = db.Books.FindIndex(b => b.Id == author.Id);
+                if (existing == null)
+                    throw new InvalidOperationException("Author not found.");
 
-                if (index == -1)
-                    throw new InvalidOperationException("Book not found.");
-
-                db.Authors[index] = author;
-
-
+                existing.Name = author.Name;
             }
+
             _fileStorage.Save(db);
         }
     }

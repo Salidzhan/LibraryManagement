@@ -79,6 +79,7 @@
     <Compile Include="ConsoleUi\LibraryUi.cs" />
     <Compile Include="Data\FileAuthorRepository.cs" />
     <Compile Include="Data\FileBookRepository.cs" />
+    <Compile Include="Data\FileMemberRepository.cs" />
     <Compile Include="Data\FileStorage.cs" />
     <Compile Include="Data\LibraryContext.cs" />
     <Compile Include="Data\LibraryStorage.cs" />

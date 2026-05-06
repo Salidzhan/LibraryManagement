@@ -3,9 +3,6 @@ using LibraryManagement.Services.Interfaces1;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Security.Principal;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace LibraryManagement.Data
 {
@@ -22,7 +19,7 @@ namespace LibraryManagement.Data
         {
             var db = storage.Load();
 
-            var book = db.Books.FirstOrDefault(p => p.Id == id);
+            var book = db.Books.FirstOrDefault(b => b.Id == id);
 
             if (book == null)
                 throw new InvalidOperationException("Book not found.");
@@ -33,8 +30,7 @@ namespace LibraryManagement.Data
         public IReadOnlyList<Book> GetAll()
         {
             var db = storage.Load();
-
-            return db.Books;
+            return db.Books.ToList(); // защита от external modification
         }
 
         public void Save(Book book)
@@ -43,7 +39,7 @@ namespace LibraryManagement.Data
                 throw new ArgumentNullException(nameof(book));
 
             if (string.IsNullOrWhiteSpace(book.Title))
-                throw new ArgumentException("Book title is missing.", nameof(book));
+                throw new ArgumentException("Book title is required.");
 
             var db = storage.Load();
 
@@ -55,22 +51,25 @@ namespace LibraryManagement.Data
                     book.Genre,
                     book.AuthorId,
                     book.Copies
-                    );
+                );
 
                 db.Books.Add(newBook);
             }
             else
             {
-              
-                var index = db.Books.FindIndex(b => b.Id == book.Id);
+                var existing = db.Books.FirstOrDefault(b => b.Id == book.Id);
 
-                if (index == -1)
+                if (existing == null)
                     throw new InvalidOperationException("Book not found.");
 
-                db.Books[index] = book;
-
-               
+                // update fields (correct approach)
+                existing.Title = book.Title;
+                existing.Genre = book.Genre;
+                existing.AuthorId = book.AuthorId;
+                existing.Copies = book.Copies;
+                existing.LoanCount = book.LoanCount;
             }
+
             storage.Save(db);
         }
 
